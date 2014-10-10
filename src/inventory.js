@@ -18,5 +18,5 @@ define(['../lib/knockout/knockout'], function (ko) {
                 }
             });
         }
-    }
+    };
 });

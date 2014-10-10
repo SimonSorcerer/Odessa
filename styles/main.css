@@ -1,0 +1,46 @@
+body, div, span, ul, li, p, h1, h2, h3, header {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Open Sans", Helvetica, sans-serif;
+    font-size: 1em;
+    background-color: black;
+    color: #ffffff;
+}
+
+header {
+    margin: 10px;
+}
+
+.inventory {
+    border: 1px solid #ffffff;
+    width: 480px;
+    margin: 20px 10px;
+}
+
+.inventory header {
+    border-bottom: 1px solid #ffffff;
+    margin: 0;
+    padding: 6px 8px;
+    font-weight: bold;
+}
+
+.inventory ul {
+    padding: 12px 8px;
+    list-style-type: none;
+}
+
+.inventory ul li {
+    display: inline-block;
+}
+
+.item {
+    color: whitesmoke;
+}
+
+.item:hover {
+    color: yellow;
+    cursor: pointer;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Odessa project</title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+</head>
+<body>
+    <header>Hello, this is Odessa ...</header>
+
+    <div class="inventory">
+        <header>Inventory</header>
+
+        <ul data-bind="foreach: items">
+            <li>
+                <span class="item" data-bind="text: name"></span> -
+            </li>
+        </ul>
+    </div>
+
+    <script data-main="main.js" src="lib/require/require.js"></script>
+</body>
+</html>

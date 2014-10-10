@@ -3,13 +3,13 @@
     'use strict';
 
     var src = '../src/',
-        jasmineCore = '/spec/lib/jasmine-2.0.0/',
+        jasmineCore = '../spec/lib/jasmine-2.0.0/',
         specPath = '../spec/',
         specs;
 
     window.specConfig = {
-        src: src,
-        knockout: '../lib/knockout/knockout'
+        src: src
+        //knockout: '../lib/knockout/knockout'
     };
 
     require.config({
