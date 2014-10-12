@@ -1,4 +1,4 @@
-define(['../lib/knockout/knockout'], function (ko) {
+define(['../lib/knockout/knockout', 'src/item'], function (ko, Item) {
     'use strict';
 
     return function Inventory() {
@@ -17,6 +17,9 @@ define(['../lib/knockout/knockout'], function (ko) {
                     self.selectedItem(item);
                 }
             });
-        }
+        };
+
+        self.add(new Item('apple').name('Apple').description('Red apple with a worm inside'));
+        self.add(new Item('old_key').name('Old Key').description('Old rusty key'));
     };
 });

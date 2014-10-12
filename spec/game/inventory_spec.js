@@ -12,13 +12,19 @@ require(['inventory', 'item'], function (Inventory, Item) {
 
         it('can have items added', function () {
             var item = new Item(),
-                item2 = new Item();
+                item2 = new Item(),
+                size = inventory.items().length,
+                lastItem;
 
             inventory.add(item);
-            expect(inventory.items()).toEqual([item]);
+            lastItem = inventory.items()[inventory.items().length - 1];
+            expect(inventory.items().length).toBe(size + 1);
+            expect(lastItem).toEqual(item);
 
             inventory.add(item2);
-            expect(inventory.items()).toEqual([item, item2]);
+            lastItem = inventory.items()[inventory.items().length - 1];
+            expect(inventory.items().length).toBe(size + 2);
+            expect(lastItem).toEqual(item2);
         });
 
         it('can have one of its items selected by id', function () {

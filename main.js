@@ -1,4 +1,4 @@
-define(['src/inventory', 'src/item', 'lib/knockout/knockout'], function (Inventory, Item, ko) {
+define(['lib/knockout/knockout', 'src/inventory'], function (ko, Inventory) {
     'use strict';
 
     require.config({
@@ -8,9 +8,8 @@ define(['src/inventory', 'src/item', 'lib/knockout/knockout'], function (Invento
         }
     });
 
-    var test_inventory = new Inventory();
-    test_inventory.add(new Item('apple').name('Apple').description('Red apple with a worm inside'));
-    test_inventory.add(new Item('old_key').name('Old Key').description('Old rusty key'));
-
-    ko.applyBindings(test_inventory);
+    ko.components.register('inventory', {
+        viewModel:  Inventory,
+        template: { require: 'text!src/templates/inventory.html' }
+    });
 });
