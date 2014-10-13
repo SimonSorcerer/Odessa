@@ -34,6 +34,7 @@
     specs = [
         specPath + 'item_spec',
         specPath + 'inventory_spec',
+        specPath + 'command_line_spec',
         specPath + '/utility/renderer_spec',
         specPath + '/utility/componentizer_spec'
     ];

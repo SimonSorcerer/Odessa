@@ -15,7 +15,8 @@ define(function () {
     require(['src/utility/renderer', 'src/utility/componentizer', 'src/Inventory', 'src/game'], function (renderer, componentizer, Inventory, Game) {
         var game = new Game(),
             components = [
-                { name: 'inventory', vm: game.inventory , template: 'src/templates/inventory.html' }
+                { name: 'inventory', vm: game.inventory , template: 'src/templates/inventory.html' },
+                { name: 'command_line', vm: game.commandLine, template: 'src/templates/command_line.html' }
             ];
 
         componentizer.registerBatch(components);

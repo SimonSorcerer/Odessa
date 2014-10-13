@@ -4,7 +4,7 @@ body, div, span, ul, li, p, h1, h2, h3, header {
 }
 
 body {
-    font-family: "Open Sans", Helvetica, sans-serif;
+    font-family: "Courier New", Helvetica, sans-serif;
     font-size: 1em;
     background-color: black;
     color: #ffffff;
@@ -14,17 +14,21 @@ header {
     margin: 10px;
 }
 
-.inventory {
+.inventory, .command_line {
     border: 1px solid #ffffff;
     width: 480px;
     margin: 20px 10px;
 }
 
-.inventory header {
+.inventory header, .command_line header {
     border-bottom: 1px solid #ffffff;
     margin: 0;
     padding: 6px 8px;
     font-weight: bold;
+}
+
+.command_line .messages {
+    padding: 12px 8px;
 }
 
 .inventory ul {
