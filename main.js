@@ -19,6 +19,6 @@ define(function () {
             ];
 
         componentizer.registerBatch(components);
-        renderer.render(game);
+        renderer.render(game, "#game");
     });
 });

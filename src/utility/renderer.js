@@ -1,9 +1,13 @@
 define(['knockout'], function (ko) {
     'use strict';
 
-    function render(vm, uiElement) {
-        if (uiElement) {
-            ko.applyBindings(vm, uiElement);
+    function getNode(element) {
+        return (typeof element === 'string') ? document.querySelector(element) : element;
+    }
+
+    function render(vm, element) {
+        if (element) {
+            ko.applyBindings(vm, getNode(element));
         } else {
             ko.applyBindings(vm);
         }

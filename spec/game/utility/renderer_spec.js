@@ -12,6 +12,20 @@ require(['src/utility/renderer', 'knockout'], function (renderer, ko) {
             expect(ko.applyBindings).toHaveBeenCalledWith(vm, element);
         });
 
+        it('applies bindings to element that matches selector with provided view model if element is selector string', function () {
+            var vm = {},
+                element = document.createElement('div'),
+                selectorQuery = "#main";
+
+            element.id = "main";
+            document.body.appendChild(element);
+
+            spyOn(ko, 'applyBindings');
+            renderer.render(vm, selectorQuery);
+
+            expect(ko.applyBindings).toHaveBeenCalledWith(vm, element);
+        });
+
         it('applies bindings globally with provided view model when no element is specified', function () {
             var vm = {};
 
