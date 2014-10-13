@@ -1,26 +1,20 @@
-define(['knockout', 'src/inventory'], function (ko, Inventory) {
+define(['knockout'], function (ko) {
     'use strict';
 
-    var components = [
-        { name: 'inventory', vm: Inventory , template: 'src/templates/inventory.html' }
-    ];
-
-    function vmFactory(vmConstructor, options) {
-        return new vmConstructor(options);
-    }
-
     function registerComponent(name, vm, template) {
+        var templatePath = 'text!' + template;
+
         if (!ko.components.isRegistered(name)) {
             ko.components.register(name, {
                 viewModel: { instance: vm },
-                template: { require: 'text!' + template }
+                template: { require: templatePath }
             });
         }
     }
 
     function registerComponentsBatch(batch) {
         batch.forEach(function (component) {
-            registerComponent(component.name, vmFactory(component.vm), component.template);
+            registerComponent(component.name, component.vm, component.template);
         })
     }
 

@@ -1,13 +1,24 @@
-define(['lib/knockout/knockout', 'src/game'], function (ko, Game) {
+define(function () {
     'use strict';
 
+    var srcPath = 'src/',
+        libPath = 'lib/';
+
     require.config({
-        baseUrl: 'src',
+        baseUrl: '',
         paths: {
-            knockout: 'lib/knockout/knockout-min'
+            knockout: libPath + 'knockout/knockout',
+            text: libPath + '/text/text'
         }
     });
 
+    require(['src/utility/renderer', 'src/utility/componentizer', 'src/Inventory', 'src/game'], function (renderer, componentizer, Inventory, Game) {
+        var game = new Game(),
+            components = [
+                { name: 'inventory', vm: game.inventory , template: 'src/templates/inventory.html' }
+            ];
 
-    ko.applyBindings(new Game());
+        componentizer.registerBatch(components);
+        renderer.render(game);
+    });
 });
