@@ -1,23 +1,20 @@
-/*globals require, window, setTimeout*/
 (function (window) {
     'use strict';
 
-    var src = '../src/',
-        jasmineCore = '../spec/lib/jasmine-2.0.0/',
-        specPath = '../spec/',
+    var srcPath = 'src/',
+        libPath = 'lib/',
+        specPath = 'spec/game/',
+        jasminePath = 'spec/lib/jasmine-2.0.0/',
         specs;
 
-    window.specConfig = {
-        src: src
-        //knockout: '../lib/knockout/knockout'
-    };
-
     require.config({
-        baseUrl: src,
+        baseUrl: '..',
         paths: {
-            jasmine: jasmineCore + 'jasmine',
-            jasmineHtml: jasmineCore + 'jasmine-html',
-            boot: jasmineCore + 'boot'
+            src: srcPath,
+            jasmine: jasminePath + 'jasmine',
+            jasmineHtml: jasminePath + 'jasmine-html',
+            knockout: libPath + 'knockout/knockout',
+            boot: jasminePath + 'boot'
         },
         shim: {
             jasmine: {
@@ -35,8 +32,10 @@
     });
 
     specs = [
-        specPath + 'game/item_spec',
-        specPath + 'game/inventory_spec'
+        specPath + 'item_spec',
+        specPath + 'inventory_spec',
+        specPath + '/utility/renderer_spec',
+        specPath + '/utility/componentizer_spec'
     ];
 
     require(['boot'], function () {

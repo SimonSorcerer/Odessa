@@ -1,4 +1,4 @@
-require(['item'], function (Item) {
+require(['src/item'], function (Item) {
     'use strict';
 
     describe('item', function () {

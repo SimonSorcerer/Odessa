@@ -1,4 +1,4 @@
-define(['../lib/knockout/knockout'], function (ko) {
+define(['knockout'], function (ko) {
     'use strict';
 
     return function Item(id) {

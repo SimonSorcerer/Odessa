@@ -1,4 +1,4 @@
-require(['inventory', 'item'], function (Inventory, Item) {
+require(['src/inventory', 'src/item'], function (Inventory, Item) {
     describe('Inventory', function () {
         var inventory;
 

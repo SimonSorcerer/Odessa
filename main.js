@@ -1,4 +1,4 @@
-define(['lib/knockout/knockout', 'src/inventory'], function (ko, Inventory) {
+define(['lib/knockout/knockout', 'src/game'], function (ko, Game) {
     'use strict';
 
     require.config({
@@ -8,8 +8,6 @@ define(['lib/knockout/knockout', 'src/inventory'], function (ko, Inventory) {
         }
     });
 
-    ko.components.register('inventory', {
-        viewModel:  Inventory,
-        template: { require: 'text!src/templates/inventory.html' }
-    });
+
+    ko.applyBindings(new Game());
 });
