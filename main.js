@@ -16,7 +16,8 @@ define(function () {
         var game = new Game(),
             components = [
                 { name: 'inventory', vm: game.inventory , template: 'src/templates/inventory.html' },
-                { name: 'command_line', vm: game.commandLine, template: 'src/templates/command_line.html' }
+                { name: 'command_line', vm: game.commandLine, template: 'src/templates/command_line.html' },
+                { name: 'description_box', vm: game.descriptionBox, template: 'src/templates/description_box.html' }
             ];
 
         componentizer.registerBatch(components);

@@ -14,13 +14,13 @@ header {
     margin: 10px;
 }
 
-.inventory, .command_line {
+.box {
     border: 1px solid #ffffff;
     width: 480px;
     margin: 20px 10px;
 }
 
-.inventory header, .command_line header {
+.box header {
     border-bottom: 1px solid #ffffff;
     margin: 0;
     padding: 6px 8px;
@@ -28,6 +28,10 @@ header {
 }
 
 .command_line .messages {
+    padding: 12px 8px;
+}
+
+.description_box div {
     padding: 12px 8px;
 }
 
