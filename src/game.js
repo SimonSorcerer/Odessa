@@ -18,6 +18,12 @@ define(['src/command_line', 'src/description_box', 'src/inventory', 'src/item'],
         self.commandLine.write("You see a large red tree.");
         self.commandLine.write("There are few apples around.");
 
-        self.descriptionBox.display(items[1]);
+        self.inventory.selectedItem.subscribe(function (item) {
+            if (item) {
+                self.descriptionBox.display(item);
+            } else {
+                self.descriptionBox.clear();
+            }
+        });
     }
 });

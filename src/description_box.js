@@ -10,6 +10,11 @@ define(['knockout'], function (ko) {
         self.display = function (item) {
             self.name(item.name());
             self.description(item.description());
-        }
+        };
+
+        self.clear = function () {
+            self.name('');
+            self.description('');
+        };
     }
 });

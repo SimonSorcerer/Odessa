@@ -7,16 +7,16 @@ define(['knockout', 'src/item'], function (ko, Item) {
         self.items = ko.observableArray();
         self.selectedItem = ko.observable();
 
-        self.add = function (item) {
-            self.items.push(item);
+        self.select = function (item) {
+            self.selectedItem(item);
         };
 
-        self.selectById = function (id) {
-            self.items().forEach(function (item) {
-                if (item.id() === id) {
-                    self.selectedItem(item);
-                }
-            });
+        self.clearSelection = function () {
+            self.selectedItem(undefined);
+        };
+
+        self.add = function (item) {
+            self.items.push(item);
         };
     };
 });

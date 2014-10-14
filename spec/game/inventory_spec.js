@@ -27,15 +27,30 @@ require(['src/inventory', 'src/item'], function (Inventory, Item) {
             expect(lastItem).toEqual(item2);
         });
 
-        it('can have one of its items selected by id', function () {
-            var id = 'random_id',
-                item = new Item();
-            spyOn(item, 'id').and.callFake(function () { return id; })
+        it('can have item selected', function () {
+            var item = new Item(),
+                item2 = new Item();
 
             inventory.add(item);
-            inventory.selectById(id);
+            inventory.add(item2);
 
+            expect(inventory.selectedItem()).toBe(undefined);
+            inventory.select(item2);
+            expect(inventory.selectedItem()).toBe(item2);
+            inventory.select(item);
             expect(inventory.selectedItem()).toBe(item);
+        });
+
+        it('can have item deselected', function () {
+            var item = new Item();
+
+            inventory.add(item);
+
+            expect(inventory.selectedItem()).toBe(undefined);
+            inventory.select(item);
+            expect(inventory.selectedItem()).toBe(item);
+            inventory.clearSelection();
+            expect(inventory.selectedItem()).toBe(undefined);
         });
     });
 });

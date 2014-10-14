@@ -4,7 +4,7 @@ body, div, span, ul, li, p, h1, h2, h3, header {
 }
 
 body {
-    font-family: "Courier New", Helvetica, sans-serif;
+    font-family: "Open sans", "Courier New", Helvetica, sans-serif;
     font-size: 1em;
     background-color: black;
     color: #ffffff;
@@ -31,8 +31,14 @@ header {
     padding: 12px 8px;
 }
 
+.description_box header span {
+    color: yellow;
+}
+
 .description_box div {
     padding: 12px 8px;
+    min-height: 1em;
+    line-height: 1em;
 }
 
 .inventory ul {

@@ -18,5 +18,17 @@ require(['src/description_box', 'src/item'], function (DescriptionBox, Item) {
             expect(descriptionBox.name()).toBe(item.name());
             expect(descriptionBox.description()).toBe(item.description());
         });
+
+        it('can be cleared', function () {
+            var item = new Item("key").name("Old key").description("Old rusty key you found in your pocket.");
+
+            descriptionBox.display(item);
+            expect(descriptionBox.name()).toBe(item.name());
+            expect(descriptionBox.description()).toBe(item.description());
+
+            descriptionBox.clear();
+            expect(descriptionBox.name()).toBe('');
+            expect(descriptionBox.description()).toBe('');
+        });
     });
 });
