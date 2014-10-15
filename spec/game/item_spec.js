@@ -76,6 +76,14 @@ require(['src/item'], function (Item) {
 
             expect(callback.success).toHaveBeenCalled();
             expect(callback.fail).not.toHaveBeenCalled();
-        })
+        });
+
+        it('can have default action specified', function () {
+            expect(item.defaultAction).not.toBeUndefined();
+        });
+
+        it('can be used with any action', function () {
+            //item.use();
+        });
     });
 });
