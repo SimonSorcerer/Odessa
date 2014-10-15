@@ -32,7 +32,7 @@ header {
 }
 
 .description_box header span {
-    color: yellow;
+    color: palegreen;
 }
 
 .description_box div {
@@ -51,10 +51,10 @@ header {
 }
 
 .item {
-    color: whitesmoke;
+    color: palegreen;
 }
 
 .item:hover {
-    color: yellow;
+    color: white;
     cursor: pointer;
 }
