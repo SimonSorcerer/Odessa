@@ -1,0 +1,20 @@
+[
+    {
+        "id": "old_key",
+        "name": "Old Key",
+        "description": "Old rusty key. You found it hidden beneath a doorstep.",
+        "obtainable": true
+    },
+    {
+        "id": "apple",
+        "name": "Apple",
+        "description": "Green apple from your garden.",
+        "obtainable": true
+    },
+    {
+        "id": "fireplace_1",
+        "name": "Fireplace",
+        "description": "Old brick-layered fireplace. It's cold now as it was long time ago since someone made a fire in it.",
+        "obtainable": false
+    }
+]
