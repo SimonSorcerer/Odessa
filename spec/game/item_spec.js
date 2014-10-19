@@ -77,5 +77,17 @@ require(['src/item'], function (Item) {
             expect(callback.success).toHaveBeenCalled();
             expect(callback.fail).not.toHaveBeenCalled();
         });
+
+        it('can be set by provided Json data', function () {
+            var jsonData = { "id": "cat", "name": "Rosa the cat", "obtainable": false },
+                item;
+
+            item = new Item(jsonData.id).fromJson(jsonData);
+
+            expect(item.id()).toBe('cat');
+            expect(item.name()).toBe('Rosa the cat');
+            expect(item.description()).toBe('');
+            expect(item.obtainable()).toBe(false);
+        });
     });
 });

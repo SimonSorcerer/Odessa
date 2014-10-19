@@ -17,6 +17,14 @@ define(['knockout'], function (ko) {
             } else {
                 callback.fail();
             }
-        }
+        };
+
+        self.fromJson = function(json) {
+            self.name(json.name || id);
+            self.description(json.description || '');
+            self.obtainable(json.obtainable === undefined ? true : json.obtainable);
+
+            return self;
+        };
     }
 });

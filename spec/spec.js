@@ -14,7 +14,8 @@
             jasmine: jasminePath + 'jasmine',
             jasmineHtml: jasminePath + 'jasmine-html',
             knockout: libPath + 'knockout/knockout',
-            boot: jasminePath + 'boot'
+            boot: jasminePath + 'boot',
+            text: libPath + '/text/text'
         },
         shim: {
             jasmine: {
@@ -38,7 +39,8 @@
         specPath + 'description_box_spec',
         specPath + 'game_spec',
         specPath + '/utility/renderer_spec',
-        specPath + '/utility/componentizer_spec'
+        specPath + '/utility/componentizer_spec',
+        specPath + '/utility/parser_spec'
     ];
 
     require(['boot'], function () {

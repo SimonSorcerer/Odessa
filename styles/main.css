@@ -39,6 +39,7 @@ header {
     padding: 12px 8px;
     min-height: 1em;
     line-height: 1em;
+    height: 2em;
 }
 
 .inventory ul {
