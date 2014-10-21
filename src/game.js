@@ -10,7 +10,7 @@ define(['src/command_line', 'src/description_box', 'src/inventory', 'src/utility
         self.commandLine = new CommandLine();
         self.descriptionBox = new DescriptionBox();
 
-        items = parser.parse(itemsData);
+        items = parser.parse('items', itemsData);
         items.forEach(function (item) {
             self.inventory.add(item);
         });

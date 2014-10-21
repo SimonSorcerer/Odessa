@@ -34,6 +34,7 @@
 
     specs = [
         specPath + 'item_spec',
+        specPath + 'action_spec',
         specPath + 'inventory_spec',
         specPath + 'command_line_spec',
         specPath + 'description_box_spec',

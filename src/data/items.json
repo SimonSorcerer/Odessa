@@ -16,5 +16,11 @@
         "name": "Fireplace",
         "description": "Old brick-layered fireplace. It's cold now as it was long time ago since someone made a fire in it.",
         "obtainable": false
+    },
+    {
+        "id": "main_door",
+        "name": "Door",
+        "description": "Main entrance door to your house. It is locked.",
+        "obtainable": false
     }
 ]

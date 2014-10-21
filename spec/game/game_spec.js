@@ -1,5 +1,5 @@
 require(['src/game'], function (Game) {
-    describe('Inventory', function () {
+    describe('Game', function () {
         var game,
             dummyItem = {
                 name: function () { return 'Brick'; },

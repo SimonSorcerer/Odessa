@@ -1,0 +1,18 @@
+[
+    {
+        "id": "lookAt",
+        "text": "Look at"
+    },
+    {
+        "id": "pickUp",
+        "text": ["Pick up", "Get"]
+    },
+    {
+        "id": "open",
+        "text": "Open"
+    },
+    {
+        "id": "close",
+        "text": "Close"
+    }
+]

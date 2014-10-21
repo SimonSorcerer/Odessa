@@ -1,0 +1,12 @@
+[
+    {
+        "items": ["old_key", "main_door"],
+        "action": "use",
+        "results": [
+            {
+                "item": "main_door",
+                "state": 2
+            }
+        ]
+    }
+]
