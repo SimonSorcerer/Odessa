@@ -1,8 +1,8 @@
 [
     {
         "id": "old_key",
-        "name": "Old Key",
-        "description": "Old rusty key. You found it hidden beneath a doorstep.",
+        "name": "Door Key",
+        "description": "Small yellow key. You found it hidden beneath a doorstep.",
         "obtainable": true
     },
     {
@@ -21,6 +21,11 @@
         "id": "main_door",
         "name": "Door",
         "description": "Main entrance door to your house. It is locked.",
-        "obtainable": false
+        "obtainable": false,
+        "defaultAction": "open",
+        "states": [{
+            "id": "main_door_2",
+            "description": "Main entrance door to your house. It is wide open now."
+        }]
     }
 ]
