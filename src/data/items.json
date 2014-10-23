@@ -20,11 +20,14 @@
     {
         "id": "main_door",
         "name": "Door",
-        "description": "Main entrance door to your house. It is locked.",
+        "description": "Main entrance door to your house.",
         "obtainable": false,
         "defaultAction": "open",
         "states": [{
             "id": "main_door_2",
+            "description": "Main entrance door to your house. It is locked."
+        }, {
+            "id": "main_door_3",
             "description": "Main entrance door to your house. It is wide open now."
         }]
     }

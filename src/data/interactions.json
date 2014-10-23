@@ -2,6 +2,18 @@
     {
         "items": ["old_key", "main_door"],
         "action": "use",
+        "text": "With loud 'clank' you unlock the door",
+        "results": [
+            {
+                "item": "main_door",
+                "state": 3
+            }
+        ]
+    },
+    {
+        "items": ["main_door"],
+        "action": "open",
+        "text": "You try to open the door, but it's firmly locked.",
         "results": [
             {
                 "item": "main_door",
