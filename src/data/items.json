@@ -22,7 +22,6 @@
         "name": "Door",
         "description": "Main entrance door to your house.",
         "obtainable": false,
-        "defaultAction": "open",
         "states": [{
             "id": "main_door_2",
             "description": "Main entrance door to your house. It is locked."

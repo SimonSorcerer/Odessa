@@ -1,4 +1,4 @@
-define(['src/item', 'src/action'], function (Item, Action) {
+define(['src/item', 'src/action', 'src/interaction'], function (Item, Action, Interaction) {
     'use strict';
 
     function parseJson(data) {
@@ -33,6 +33,7 @@ define(['src/item', 'src/action'], function (Item, Action) {
         switch (type) {
             case "items": return createModels(json, Item);
             case "actions": return createModels(json, Action);
+            case "interactions": return createModels(json, Interaction);
         }
     }
 

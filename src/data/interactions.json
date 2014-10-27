@@ -1,6 +1,7 @@
 [
     {
-        "items": ["old_key", "main_door"],
+        "item": "old_key",
+        "target": "main_door",
         "action": "use",
         "text": "With loud 'clank' you unlock the door",
         "results": [
@@ -11,9 +12,10 @@
         ]
     },
     {
-        "items": ["main_door"],
+        "item": "main_door",
         "action": "open",
         "text": "You try to open the door, but it's firmly locked.",
+        "default": true,
         "results": [
             {
                 "item": "main_door",

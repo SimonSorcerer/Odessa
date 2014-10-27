@@ -19,6 +19,13 @@ define(['knockout'], function (ko) {
             }
         };
 
+        self.interact = function(action) {
+        };
+
+        self.getDefaultAction = function() {
+            return
+        };
+
         self.fromJson = function(json) {
             self.name(json.name || id);
             self.description(json.description || '');

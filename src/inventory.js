@@ -7,6 +7,10 @@ define(['knockout', 'src/item'], function (ko, Item) {
         self.items = ko.observableArray();
         self.selectedItem = ko.observable();
 
+        self.interact = function (item) {
+            item.interact();
+        };
+
         self.select = function (item) {
             self.selectedItem(item);
         };

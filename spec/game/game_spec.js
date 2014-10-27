@@ -36,5 +36,13 @@ require(['src/game'], function (Game) {
             expect(game.descriptionBox.display.calls.count()).toBe(1);
             expect(game.descriptionBox.clear).toHaveBeenCalled();
         });
+
+        it('can interact with an item in inventory', function () {
+            spyOn(game.commandLine, 'write');
+
+            game.interact(dummyItem);
+
+            expect(game.commandLine.write).toHaveBeenCalledWith(dummyItem.name());
+        });
     });
 });

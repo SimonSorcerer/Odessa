@@ -89,5 +89,15 @@ require(['src/item'], function (Item) {
             expect(item.description()).toBe('');
             expect(item.obtainable()).toBe(false);
         });
+
+        it('can interact with an action', function () {
+            var action = 'open';
+
+            item.interact(action);
+        });
+
+        it('interacts with a deafult interaction if no action is specified', function () {
+            item.interact();
+        });
     });
 });
