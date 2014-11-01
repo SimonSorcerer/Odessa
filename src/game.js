@@ -1,32 +1,20 @@
-define(['src/command_line', 'src/description_box', 'src/inventory', 'src/utility/parser', 'text!src/data/items.json', 'text!src/data/interactions.json'],
-    function (CommandLine, DescriptionBox, Inventory, parser, itemsData, interactionsData) {
+define(['src/command_line', 'src/description_box', 'src/inventory', 'src/dataManager'],
+    function (CommandLine, DescriptionBox, Inventory, dataManager) {
     'use strict';
 
     return function Game() {
         var self = this,
-            items,
-            interactions;
+            items = [],
+            interactions = [];
 
-        self.inventory = new Inventory();
-        self.commandLine = new CommandLine();
-        self.descriptionBox = new DescriptionBox();
-        interactions = parser.parse('interactions', interactionsData);
+        function onDataLoad() {
+            interactions = dataManager.get('interactions');
 
-        items = parser.parse('items', itemsData);
-        items.forEach(function (item) {
-            self.inventory.add(item);
-        });
-
-        self.commandLine.write("You see a large red tree.");
-        self.commandLine.write("There are few apples around.");
-
-        self.inventory.selectedItem.subscribe(function (item) {
-            if (item) {
-                self.descriptionBox.display(item);
-            } else {
-                self.descriptionBox.clear();
-            }
-        });
+            items = dataManager.get('items');
+            items.forEach(function (item) {
+                self.inventory.add(item);
+            });
+        }
 
         function findDefaultInteraction(item) {
             var found;
@@ -39,6 +27,23 @@ define(['src/command_line', 'src/description_box', 'src/inventory', 'src/utility
 
             return found;
         }
+
+        self.inventory = new Inventory();
+        self.commandLine = new CommandLine();
+        self.descriptionBox = new DescriptionBox();
+
+        dataManager.load(onDataLoad);
+
+        self.commandLine.write("You see a large red tree.");
+        self.commandLine.write("There are few apples around.");
+
+        self.inventory.selectedItem.subscribe(function (item) {
+            if (item) {
+                self.descriptionBox.display(item);
+            } else {
+                self.descriptionBox.clear();
+            }
+        });
 
         self.interact = function (item) {
             var defaultAction = findDefaultInteraction(item);

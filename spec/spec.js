@@ -33,6 +33,7 @@
     });
 
     specs = [
+        specPath + 'dataManager_spec',
         specPath + 'item_spec',
         specPath + 'action_spec',
         specPath + 'interaction_spec',

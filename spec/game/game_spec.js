@@ -1,7 +1,8 @@
-require(['src/game'], function (Game) {
+require(['src/game', 'src/dataManager'], function (Game, dataManager) {
     describe('Game', function () {
         var game,
             dummyItem = {
+                id: function () { return 'Brick'; },
                 name: function () { return 'Brick'; },
                 description: function () { return 'Old red brick with a writing on it.'; }
             };
@@ -38,11 +39,27 @@ require(['src/game'], function (Game) {
         });
 
         it('can interact with an item in inventory', function () {
+            var dummyInteraction = {
+                "item": "brick",
+                "action": "throw",
+                "text": "With some careful aiming you threw the brick into the window",
+                "default": true
+            };
+
+            spyOn(dataManager, 'get').and.callFake(function (dataType) {
+                if (dataType === 'items') {
+                    return dummyItem;
+                } else if (dataType === 'interactions') {
+                    return dummyInteraction;
+                }
+            });
+
+            game = new Game();
             spyOn(game.commandLine, 'write');
 
             game.interact(dummyItem);
 
-            expect(game.commandLine.write).toHaveBeenCalledWith(dummyItem.name());
+            expect(game.commandLine.write).toHaveBeenCalledWith("throw " + dummyItem.name());
         });
     });
 });
