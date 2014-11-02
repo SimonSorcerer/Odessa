@@ -13,14 +13,17 @@ define(function () {
     });
 
     require(['src/utility/renderer', 'src/utility/componentizer', 'src/Inventory', 'src/game'], function (renderer, componentizer, Inventory, Game) {
-        var game = new Game(),
-            components = [
+        function onGameLoad() {
+            var components = [
                 { name: 'inventory', vm: game.inventory , template: 'src/templates/inventory.html' },
                 { name: 'command_line', vm: game.commandLine, template: 'src/templates/command_line.html' },
                 { name: 'description_box', vm: game.descriptionBox, template: 'src/templates/description_box.html' }
             ];
 
-        componentizer.registerBatch(components);
-        renderer.render(game, "#game");
+            componentizer.registerBatch(components);
+            renderer.render(game, "#game");
+        }
+
+        new Game(onGameLoad);
     });
 });
