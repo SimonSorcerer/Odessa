@@ -29,6 +29,9 @@ header {
 
 .command_line .messages {
     padding: 12px 8px;
+    line-height: 1.2em;
+    max-height: 3.6em;
+    overflow-y: scroll;
 }
 
 .description_box header span {

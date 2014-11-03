@@ -24,6 +24,18 @@ require(['src/command_line', 'src/dataManager'], function (CommandLine, dataMana
             expect(commandLine.messages()[0].text).toBe(message);
         });
 
+        it('stores messages in reverse order (newest first)', function () {
+            var message = 'There is a three-headed monkey behind you.',
+                message2 = 'It is selling these fine leather jackets.';
+
+            commandLine.write(message);
+            commandLine.write(message2);
+
+            expect(commandLine.messages().length).toBe(2);
+            expect(commandLine.messages()[0].text).toBe(message2);
+            expect(commandLine.messages()[1].text).toBe(message);
+        });
+
         it('can recognize items in messages by item id', function () {
             var message = 'You see a large red brick';
 

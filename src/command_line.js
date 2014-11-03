@@ -44,7 +44,7 @@ define(['knockout', 'src/dataManager'], function (ko, dataManager) {
         self.messages = ko.observableArray([]);
 
         self.write = function (text) {
-            self.messages.push(createMessage(text));
+            self.messages.unshift(createMessage(text));
         }
     };
 });
