@@ -13,6 +13,8 @@ define(function () {
     });
 
     require(['src/utility/renderer', 'src/utility/componentizer', 'src/Inventory', 'src/game'], function (renderer, componentizer, Inventory, Game) {
+        var game;
+
         function onGameLoad() {
             var components = [
                 { name: 'inventory', vm: game.inventory , template: 'src/templates/inventory.html' },
@@ -24,6 +26,6 @@ define(function () {
             renderer.render(game, "#game");
         }
 
-        new Game(onGameLoad);
+        game = new Game(onGameLoad);
     });
 });

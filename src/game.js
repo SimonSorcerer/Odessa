@@ -21,14 +21,18 @@ define(['src/command_line', 'src/description_box', 'src/inventory', 'src/dataMan
 
         function onDataLoad() {
             interactions = dataManager.get('interactions');
-
             items = dataManager.get('items');
+
+            self.inventory = new Inventory();
             items.forEach(function (item) {
                 self.inventory.add(item);
             });
 
+            self.commandLine = new CommandLine();
+            self.descriptionBox = new DescriptionBox();
+
             self.commandLine.write("You see a large red tree.");
-            self.commandLine.write("There are few apples around.");
+            self.commandLine.write("There is applejuice barrel under the tree.");
 
             self.inventory.selectedItem.subscribe(function (item) {
                 if (item) {
@@ -50,10 +54,6 @@ define(['src/command_line', 'src/description_box', 'src/inventory', 'src/dataMan
 
             callback();
         }
-
-        self.inventory = new Inventory();
-        self.commandLine = new CommandLine();
-        self.descriptionBox = new DescriptionBox();
 
         dataManager.load(onDataLoad);
     }
