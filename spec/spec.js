@@ -5,7 +5,8 @@
         libPath = 'lib/',
         specPath = 'spec/game/',
         jasminePath = 'spec/lib/jasmine-2.0.0/',
-        specs;
+        specs,
+        defaultTestTimeout = 1000;
 
     require.config({
         baseUrl: '..',
@@ -48,6 +49,8 @@
 
     require(['boot'], function () {
         require(specs, function () {
+            jasmine.DEFAULT_TIMEOUT_INTERVAL = defaultTestTimeout;
+
             setTimeout(function () { window.onload(); }, 500);
         });
     });

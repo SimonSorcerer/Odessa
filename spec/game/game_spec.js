@@ -13,7 +13,7 @@ require(['src/game', 'src/dataManager'], function (Game, dataManager) {
             };
 
         it('contains all the game entities', function (done) {
-            var game = new Game(function () {
+            new Game(function (game) {
                 expect(game.inventory).not.toBeUndefined();
                 expect(game.descriptionBox).not.toBeUndefined();
                 expect(game.commandLine).not.toBeUndefined();
@@ -23,7 +23,7 @@ require(['src/game', 'src/dataManager'], function (Game, dataManager) {
         });
 
         it('updates description box when selected item in inventory changes to an item', function (done) {
-            var game = new Game(function () {
+            new Game(function (game) {
                 spyOn(game.descriptionBox, 'display');
                 spyOn(game.descriptionBox, 'clear');
 
@@ -36,7 +36,7 @@ require(['src/game', 'src/dataManager'], function (Game, dataManager) {
         });
 
         it('clears description box when selected item in inventory changes to undefined', function (done) {
-            var game = new Game(function () {
+            new Game(function (game) {
                 spyOn(game.descriptionBox, 'display');
                 spyOn(game.descriptionBox, 'clear');
 
@@ -52,8 +52,6 @@ require(['src/game', 'src/dataManager'], function (Game, dataManager) {
         });
 
         it('can interact with an item in inventory', function (done) {
-            var game;
-
             spyOn(dataManager, 'get').and.callFake(function (dataType) {
                 if (dataType === 'items') {
                     return [dummyItem];
@@ -62,7 +60,7 @@ require(['src/game', 'src/dataManager'], function (Game, dataManager) {
                 }
             });
 
-            game = new Game(function () {
+            new Game(function (game) {
                 spyOn(game.commandLine, 'write');
 
                 game.interact(dummyItem);

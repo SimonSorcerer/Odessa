@@ -52,7 +52,7 @@ define(['src/command_line', 'src/description_box', 'src/inventory', 'src/dataMan
                 }
             };
 
-            callback();
+            callback(self);
         }
 
         dataManager.load(onDataLoad);

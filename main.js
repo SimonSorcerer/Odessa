@@ -13,9 +13,7 @@ define(function () {
     });
 
     require(['src/utility/renderer', 'src/utility/componentizer', 'src/Inventory', 'src/game'], function (renderer, componentizer, Inventory, Game) {
-        var game;
-
-        function onGameLoad() {
+        function onGameLoad(game) {
             var components = [
                 { name: 'inventory', vm: game.inventory , template: 'src/templates/inventory.html' },
                 { name: 'command_line', vm: game.commandLine, template: 'src/templates/command_line.html' },
@@ -26,6 +24,6 @@ define(function () {
             renderer.render(game, "#game");
         }
 
-        game = new Game(onGameLoad);
+        new Game(onGameLoad);
     });
 });
