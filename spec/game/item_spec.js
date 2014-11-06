@@ -52,6 +52,10 @@ require(['src/item'], function (Item) {
             expect(item.obtainable()).toBe(false);
         });
 
+        it('has empty states by default', function () {
+            expect(item.states()).toEqual([]);
+        });
+
         it('can chain its attribute setters', function () {
             var name = 'Rubber chicken',
                 description = 'Rubber chicken with a pulley in the middle',
@@ -79,7 +83,7 @@ require(['src/item'], function (Item) {
         });
 
         it('can be set by provided Json data', function () {
-            var jsonData = { "id": "cat", "name": "Rosa the cat", "obtainable": false },
+            var jsonData = { "id": "cat", "name": "Rosa the cat", "obtainable": false, states: [{ id: "cat_2", name: "Rosa the hungry cat" }] },
                 item;
 
             item = new Item(jsonData.id).fromJson(jsonData);
@@ -88,16 +92,41 @@ require(['src/item'], function (Item) {
             expect(item.name()).toBe('Rosa the cat');
             expect(item.description()).toBe('');
             expect(item.obtainable()).toBe(false);
+            expect(item.states().length).toBe(1);
+            expect(item.states()[0].id).toBe('cat_2');
+            expect(item.states()[0].name).toBe('Rosa the hungry cat');
         });
 
-        it('can interact with an action', function () {
-            var action = 'open';
+        it('can be switched to a different state', function () {
+            var jsonData = { "id": "cat", "name": "Rosa the cat", "obtainable": false, states: [{ id: "cat_2", name: "Rosa the hungry cat", description: 'Rosa looks hungry.' }] },
+                item;
 
-            item.interact(action);
+            item = new Item(jsonData.id).fromJson(jsonData);
+
+            expect(item.name()).toBe('Rosa the cat');
+            expect(item.obtainable()).toBe(false);
+            expect(item.description()).toBe('');
+
+            item.switchToState(2);
+            expect(item.name()).toBe('Rosa the hungry cat');
+            expect(item.obtainable()).toBe(false);
+            expect(item.description()).toBe('Rosa looks hungry.');
         });
 
-        it('interacts with a deafult interaction if no action is specified', function () {
-            item.interact();
+        it('will not be switched to non-defined state', function () {
+            var jsonData = { "id": "cat", "name": "Rosa the cat", "obtainable": false, states: [] },
+                item;
+
+            item = new Item(jsonData.id).fromJson(jsonData);
+
+            expect(item.name()).toBe('Rosa the cat');
+            expect(item.obtainable()).toBe(false);
+            expect(item.description()).toBe('');
+
+            item.switchToState(2);
+            expect(item.name()).toBe('Rosa the cat');
+            expect(item.obtainable()).toBe(false);
+            expect(item.description()).toBe('');
         });
     });
 });

@@ -6,7 +6,6 @@ define(['knockout', 'src/dataManager'], function (ko, dataManager) {
 
         function addItemSpanFor(needle, text) {
             var re = new RegExp('\\b' + needle + '\\b', 'g');
-            console.log(re);
 
             return text.replace(re, function (match) {
                 return '<span class="item">' + match + '</span>'
