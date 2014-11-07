@@ -34,6 +34,23 @@ header {
     overflow-y: scroll;
 }
 
+.story_box .stories {
+    padding: 12px 8px;
+    line-height: 1.4em;
+    max-height: 3.6em;
+}
+
+.story_box .image {
+    max-height: 200px;
+    overflow: hidden;
+    border-bottom: 1px solid #ffffff;
+}
+
+.story_box .image img {
+    -webkit-filter: sepia(60%) grayscale(70%);
+    filter: sepia(60%) grayscale(70%);
+}
+
 .description_box header span {
     color: palegreen;
 }

@@ -41,6 +41,7 @@
         specPath + 'inventory_spec',
         specPath + 'command_line_spec',
         specPath + 'description_box_spec',
+        specPath + '/story_box_spec',
         specPath + 'game_spec',
         specPath + '/utility/renderer_spec',
         specPath + '/utility/componentizer_spec',

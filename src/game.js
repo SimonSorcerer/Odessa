@@ -1,5 +1,5 @@
-define(['src/command_line', 'src/description_box', 'src/inventory', 'src/dataManager'],
-    function (CommandLine, DescriptionBox, Inventory, dataManager) {
+define(['src/command_line', 'src/description_box', 'src/story_box', 'src/inventory', 'src/dataManager'],
+    function (CommandLine, DescriptionBox, StoryBox, Inventory, dataManager) {
     'use strict';
 
     return function Game(callback) {
@@ -30,9 +30,11 @@ define(['src/command_line', 'src/description_box', 'src/inventory', 'src/dataMan
 
             self.commandLine = new CommandLine();
             self.descriptionBox = new DescriptionBox();
+            self.storyBox = new StoryBox();
 
-            self.commandLine.write("You see a large red tree.");
-            self.commandLine.write("There is applejuice barrel under the tree.");
+            self.storyBox.add("You see a large red tree.");
+            self.storyBox.add("There is applejuice barrel under the tree.");
+            self.storyBox.image("src/images/forest.jpg")
 
             self.inventory.selectedItem.subscribe(function (item) {
                 if (item) {
