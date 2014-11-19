@@ -22,5 +22,9 @@ define(['knockout', 'src/item'], function (ko, Item) {
         self.add = function (item) {
             self.items.push(item);
         };
+
+        self.drop = function (item) {
+            item.interact();
+        };
     };
 });

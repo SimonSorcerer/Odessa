@@ -3,7 +3,7 @@
 
     <ul data-bind="foreach: items">
         <li>
-            <span class="item" data-bind="text: name, event: { mouseover: $parent.select, mouseout: $parent.clearSelection, mousedown: $root.interact }"></span>,
+            <span class="item" draggable="true" data-bind="text: name, event: { mouseover: $parent.select, mouseout: $parent.clearSelection, drop: $root.useOn, click: $root.interact }" ondragover="event.preventDefault()"></span>,
         </li>
     </ul>
 </div>

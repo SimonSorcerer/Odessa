@@ -34,7 +34,7 @@ define(['src/command_line', 'src/description_box', 'src/story_box', 'src/invento
 
             self.storyBox.add("You see a large red tree.");
             self.storyBox.add("There is applejuice barrel under the tree.");
-            self.storyBox.image("src/images/forest.jpg")
+            self.storyBox.image("src/images/forest.jpg");
 
             self.inventory.selectedItem.subscribe(function (item) {
                 if (item) {
@@ -52,6 +52,13 @@ define(['src/command_line', 'src/description_box', 'src/story_box', 'src/invento
                 } else {
                     self.commandLine.write('You are not sure what to do with ' + item.name());
                 }
+            };
+
+            self.useOn = function (item, event) {
+                var source = item,
+                    target = event.currentTarget;
+
+                console.log(source.name());
             };
 
             callback(self);
