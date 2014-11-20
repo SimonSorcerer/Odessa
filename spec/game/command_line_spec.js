@@ -79,5 +79,54 @@ require(['src/command_line', 'src/dataManager'], function (CommandLine, dataMana
             expect(commandLine.messages().length).toBe(1);
             expect(commandLine.messages()[0].parsedText).toBe(message);
         });
+
+        it('can update last message', function () {
+            var message = 'Use brick with ',
+                changedMessage = 'Use apple with brick';
+
+            commandLine.write(message);
+            commandLine.write(message);
+            commandLine.write(message);
+            expect(commandLine.messages().length).toBe(3);
+            expect(commandLine.messages()[2].text).toBe(message);
+
+            commandLine.replaceLast(changedMessage);
+            expect(commandLine.messages().length).toBe(3);
+            expect(commandLine.messages()[2].text).toBe(changedMessage);
+        });
+
+        it('will notify subscribers, when updating last message', function () {
+            var message = 'Use brick with ',
+                changedMessage = 'Use apple with brick';
+
+            spyOn(commandLine.messages, 'valueHasMutated');
+
+            commandLine.write(message);
+            commandLine.replaceLast(changedMessage);
+            expect(commandLine.messages.valueHasMutated).toHaveBeenCalled();
+        });
+
+        it('will not do anything when updating last message without having any messages', function () {
+            var message = 'Use brick with ';
+
+            expect(commandLine.messages().length).toBe(0);
+
+            commandLine.replaceLast(message);
+            expect(commandLine.messages().length).toBe(0);
+        });
+
+        it('can recognize items in replaced messages', function () {
+            var message = 'You see a large red apple',
+                changedMessage = 'You see a large red Brick';
+
+            spyOn(dataManager, 'get').and.returnValue([dummyItem]);
+
+            commandLine.write(message);
+            expect(commandLine.messages()[0].parsedText).toBe('You see a large red apple');
+
+            commandLine.replaceLast(changedMessage);
+            expect(commandLine.messages()[0].parsedText).toBe('You see a large red <span class="item">Brick</span>');
+        });
+
     });
 });

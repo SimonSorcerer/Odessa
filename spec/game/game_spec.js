@@ -22,7 +22,7 @@ require(['src/game', 'src/dataManager'], function (Game, dataManager) {
             });
         });
 
-        it('updates description box when selected item in inventory changes to an item', function (done) {
+        it('updates description box when an item in inventory is hovered', function (done) {
             new Game(function (game) {
                 spyOn(game.descriptionBox, 'display');
                 spyOn(game.descriptionBox, 'clear');
@@ -35,7 +35,7 @@ require(['src/game', 'src/dataManager'], function (Game, dataManager) {
             });
         });
 
-        it('clears description box when selected item in inventory changes to undefined', function (done) {
+        it('clears description box when another item stops being hovered', function (done) {
             new Game(function (game) {
                 spyOn(game.descriptionBox, 'display');
                 spyOn(game.descriptionBox, 'clear');
@@ -65,6 +65,60 @@ require(['src/game', 'src/dataManager'], function (Game, dataManager) {
 
                 game.interact(dummyItem);
                 expect(game.commandLine.write).toHaveBeenCalledWith("throw " + dummyItem.name());
+
+                done();
+            });
+        });
+
+        it('can select item in inventory to be used on different item', function (done) {
+            new Game(function (game) {
+                spyOn(game.commandLine, 'write');
+
+                game.use(dummyItem);
+                expect(game.commandLine.write).toHaveBeenCalledWith("Use " + dummyItem.name() + " with ");
+
+                done();
+            })
+        });
+
+        it('updates last message in command line when using an item in inventory and hovering second item', function (done) {
+            var anotherDummyItem = {
+                id: function () { return 'window'; },
+                name: function () { return 'Window'; },
+                description: function () { return 'Small squared window.'; }
+            };
+
+            new Game(function (game) {
+                spyOn(game.commandLine, 'write');
+                spyOn(game.commandLine, 'replaceLast');
+
+                game.use(dummyItem);
+                expect(game.commandLine.write).toHaveBeenCalledWith("Use " + dummyItem.name() + " with ");
+
+                game.inventory.selectedItem(anotherDummyItem);
+                expect(game.commandLine.replaceLast).toHaveBeenCalledWith("Use " + dummyItem.name() + " with " + anotherDummyItem.name());
+
+                done();
+            });
+        });
+
+        it('updates last message in command line when using an item in inventory and another item stops being hovered', function (done) {
+            var anotherDummyItem = {
+                id: function () { return 'window'; },
+                name: function () { return 'Window'; },
+                description: function () { return 'Small squared window.'; }
+            };
+
+            new Game(function (game) {
+                spyOn(game.commandLine, 'write');
+                spyOn(game.commandLine, 'replaceLast');
+
+                game.use(dummyItem);
+                game.inventory.selectedItem(anotherDummyItem);
+                expect(game.commandLine.replaceLast).toHaveBeenCalledWith("Use " + dummyItem.name() + " with " + anotherDummyItem.name());
+
+                game.inventory.selectedItem(undefined);
+                expect(game.commandLine.replaceLast).toHaveBeenCalledWith("Use " + dummyItem.name() + " with ");
 
                 done();
             });

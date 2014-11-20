@@ -5,7 +5,8 @@ define(['src/command_line', 'src/description_box', 'src/story_box', 'src/invento
     return function Game(callback) {
         var self = this,
             items = [],
-            interactions = [];
+            interactions = [],
+            usedItem;
 
         function findDefaultInteraction(item) {
             var found;
@@ -17,6 +18,22 @@ define(['src/command_line', 'src/description_box', 'src/story_box', 'src/invento
             });
 
             return found;
+        }
+
+        function updateDescriptionBox(item) {
+            if (item) {
+                self.descriptionBox.display(item);
+            } else {
+                self.descriptionBox.clear();
+            }
+        }
+
+        function updateCommandLineOnUse(usedItem, item) {
+            if (item) {
+                self.commandLine.replaceLast('Use ' + usedItem.name() + ' with ' + item.name());
+            } else {
+                self.commandLine.replaceLast('Use ' + usedItem.name() + ' with ');
+            }
         }
 
         function onDataLoad() {
@@ -37,10 +54,10 @@ define(['src/command_line', 'src/description_box', 'src/story_box', 'src/invento
             self.storyBox.image("src/images/forest.jpg");
 
             self.inventory.selectedItem.subscribe(function (item) {
-                if (item) {
-                    self.descriptionBox.display(item);
-                } else {
-                    self.descriptionBox.clear();
+                updateDescriptionBox(item);
+
+                if (usedItem) {
+                    updateCommandLineOnUse(usedItem, item);
                 }
             });
 
@@ -54,11 +71,9 @@ define(['src/command_line', 'src/description_box', 'src/story_box', 'src/invento
                 }
             };
 
-            self.useOn = function (item, event) {
-                var source = item,
-                    target = event.currentTarget;
-
-                console.log(source.name());
+            self.use = function (item) {
+                usedItem = item;
+                self.commandLine.write('Use ' + item.name() + ' with ');
             };
 
             callback(self);
