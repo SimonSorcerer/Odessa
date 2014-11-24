@@ -27,11 +27,11 @@ header {
     font-weight: bold;
 }
 
-.command_line .messages {
+.command_line .message {
     padding: 12px 8px;
     line-height: 1.2em;
+    min-height: 1.2em;
     max-height: 3.6em;
-    overflow-y: scroll;
 }
 
 .story_box .stories {

@@ -1,7 +1,5 @@
 <div class="box command_line">
     <header>Command line</header>
 
-    <div class="messages" data-bind="foreach: messages">
-        <div class="message" data-bind="html: parsedText"></div>
-    </div>
+    <div class="message" data-bind="html: lastMessage().parsedText"></div>
 </div>

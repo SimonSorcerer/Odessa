@@ -4,8 +4,6 @@ define(['knockout', 'src/dataManager'], function (ko, dataManager) {
     return function CommandLine() {
         var self = this;
 
-        self.messages = ko.observableArray([]);
-
         function addItemSpanFor(needle, text) {
             var re = new RegExp('\\b' + needle + '\\b', 'g');
 
@@ -42,15 +40,20 @@ define(['knockout', 'src/dataManager'], function (ko, dataManager) {
             };
         }
 
+        self.messages = ko.observableArray([]);
+        self.lastMessage = ko.pureComputed(function () {
+            return (self.messages().length > 0) ? self.messages()[0] : createMessage("");
+        });
+
         self.write = function (text) {
             self.messages.unshift(createMessage(text));
         };
 
         self.replaceLast = function (text)  {
-            var lastIndex = self.messages().length - 1;
-
-            self.messages()[lastIndex] = createMessage(text);
-            self.messages.valueHasMutated();
+            if (self.messages().length > 0) {
+                self.messages()[0] = createMessage(text);
+                self.messages.valueHasMutated();
+            }
         };
     };
 });

@@ -80,7 +80,7 @@ require(['src/command_line', 'src/dataManager'], function (CommandLine, dataMana
             expect(commandLine.messages()[0].parsedText).toBe(message);
         });
 
-        it('can update last message', function () {
+        it('can update last message written', function () {
             var message = 'Use brick with ',
                 changedMessage = 'Use apple with brick';
 
@@ -88,11 +88,11 @@ require(['src/command_line', 'src/dataManager'], function (CommandLine, dataMana
             commandLine.write(message);
             commandLine.write(message);
             expect(commandLine.messages().length).toBe(3);
-            expect(commandLine.messages()[2].text).toBe(message);
+            expect(commandLine.messages()[0].text).toBe(message);
 
             commandLine.replaceLast(changedMessage);
             expect(commandLine.messages().length).toBe(3);
-            expect(commandLine.messages()[2].text).toBe(changedMessage);
+            expect(commandLine.messages()[0].text).toBe(changedMessage);
         });
 
         it('will notify subscribers, when updating last message', function () {
@@ -128,5 +128,20 @@ require(['src/command_line', 'src/dataManager'], function (CommandLine, dataMana
             expect(commandLine.messages()[0].parsedText).toBe('You see a large red <span class="item">Brick</span>');
         });
 
+        it('exposes the last message if there is any', function () {
+            var message = 'You see a large red apple',
+                otherMessage = 'You see a large red Brick';
+
+            commandLine.write(message);
+            expect(commandLine.lastMessage().text).toBe(message);
+
+            commandLine.write(otherMessage);
+            expect(commandLine.lastMessage().text).toBe(otherMessage);
+        });
+
+        it('last message is empty string if there are no messages written to command line yet', function () {
+            expect(commandLine.messages.length).toBe(0);
+            expect(commandLine.lastMessage().text).toBe("");
+        });
     });
 });
